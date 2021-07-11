@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CatsModule } from './cats/cats.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { QuizzesModule } from './quizzes/quizzes.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import path from 'path';
 
 @Module({
   imports: [
@@ -17,6 +19,12 @@ import { QuizzesModule } from './quizzes/quizzes.module';
         useUnifiedTopology: true,
       }),
       inject: [ConfigService],
+    }),
+    GraphQLModule.forRoot({
+      debug: false,
+      playground: true,
+      autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
     }),
     CatsModule,
     QuizzesModule,

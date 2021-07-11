@@ -1,15 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateQuizInput } from './dto/create-quiz.input';
 import { UpdateQuizInput } from './dto/update-quiz.input';
+import { Quiz, QuizDocument } from './schema/quiz.schema';
 
 @Injectable()
 export class QuizzesService {
-  create(createQuizInput: CreateQuizInput) {
-    return 'This action adds a new quiz';
+  constructor(@InjectModel(Quiz.name) private quizModel: Model<QuizDocument>) {}
+
+  async create(createQuizInput: CreateQuizInput) {
+    const createdQuiz = new this.quizModel(createQuizInput);
+    return await createdQuiz.save();
   }
 
   findAll() {
-    return `This action returns all quizzes`;
+    return this.quizModel.find().exec();
   }
 
   findOne(id: number) {

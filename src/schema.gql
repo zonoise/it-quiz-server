@@ -1,0 +1,71 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Choice {
+  """選択肢本文"""
+  body: String!
+
+  """(例)ア イ ウ エ"""
+  index: String!
+}
+
+input ChoiceInput {
+  """選択肢本文"""
+  body: String!
+
+  """(例)ア イ ウ エ"""
+  index: String!
+}
+
+input CreateQuizInput {
+  choices: [ChoiceInput!]!
+
+  """Example field (placeholder)"""
+  quizNumber: Int!
+
+  """いつの試験か。　例:令和元年秋"""
+  srcExam: String!
+
+  """問題文"""
+  title: String!
+}
+
+type Mutation {
+  createQuiz(createQuizInput: CreateQuizInput!): Quiz!
+  removeQuiz(id: Int!): Quiz!
+  updateQuiz(updateQuizInput: UpdateQuizInput!): Quiz!
+}
+
+type Query {
+  quiz(id: Int!): Quiz!
+  quizzes: [Quiz!]!
+}
+
+type Quiz {
+  choices: [Choice!]!
+  id: ID!
+
+  """Example field (placeholder)"""
+  quizNumber: Int!
+
+  """いつの試験か。　例:令和元年秋"""
+  srcExam: String!
+
+  """問題文"""
+  title: String!
+}
+
+input UpdateQuizInput {
+  choices: [ChoiceInput!]
+  id: Int!
+
+  """Example field (placeholder)"""
+  quizNumber: Int
+
+  """いつの試験か。　例:令和元年秋"""
+  srcExam: String
+
+  """問題文"""
+  title: String
+}

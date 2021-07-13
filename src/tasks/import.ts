@@ -6,9 +6,14 @@ import * as yargs from 'yargs';
 import { CreateCatDto } from 'src/cats/dto/create-cat.dto';
 import * as fs from 'fs';
 import { parse } from 'papaparse';
+import { QuizzesModule } from 'src/quizzes/quizzes.module';
+import { QuizzesService } from 'src/quizzes/quizzes.service';
+import {
+  ChoiceInput,
+  CreateQuizInput,
+} from 'src/quizzes/dto/create-quiz.input';
 
 async function bootstrap() {
-
   const argv = yargs
     .option('csvfile', {
       type: 'string',
@@ -27,37 +32,66 @@ async function bootstrap() {
   const csvFile: string = argv.csvfile as string;
 
   const csvData = await readFromCsv(csvFile);
-  console.log("readFromCsv:",csvData);
+  console.log('readFromCsv:', csvData);
 
   const app = await NestFactory.create(AppModule);
-  const catService = app.select(CatsModule).get(CatsService, { strict: true });
+  const quizzeService = app
+    .select(QuizzesModule)
+    .get(QuizzesService, { strict: true });
 
   //insert to mongodb
-  csvData.forEach((row)=>{
-    console.log("row" , row);
-    const dto:CreateCatDto = row as CreateCatDto;
-    catService.create(dto);
+  csvData.forEach((row) => {
+    console.log('row', row);
+
+    const choices: ChoiceInput[] = [
+      { index: '1', body: row.choice_1 } as ChoiceInput,
+      { index: '2', body: row.choice_2 } as ChoiceInput,
+      { index: '3', body: row.choice_3 } as ChoiceInput,
+      { index: '4', body: row.choice_4 } as ChoiceInput,
+    ];
+
+    const input: CreateQuizInput = {
+      quizNumber: row.num,
+      title: row.title,
+      detail: row.detail,
+      image: row.image,
+      exam: row.exam,
+      choices: choices,
+    };
+
+    console.log(input);
+
+    quizzeService.create(input);
   });
 }
 
-//a
+//
 async function readFromCsv(csvFile: string) {
-  var res = [];
+  let res = [];
   const rs = fs.createReadStream(csvFile);
 
   const f = function readCsv(stream: fs.ReadStream) {
     return new Promise<any>((resolve, reject) => {
       parse(stream, {
-        header:true,
+        header: true,
         complete: (results: any) => {
           console.log(results);
           resolve(results.data);
-        }
+        },
+        error: (error, file) => {
+          console.error(error, file);
+          reject(error);
+        },
       });
     });
-  }
-  
-  await f(rs).then((data)=>res=data);
+  };
+
+  await f(rs)
+    .then((data) => (res = data))
+    .catch((error) => {
+      throw new Error(error);
+   });
+
   return res;
 }
 

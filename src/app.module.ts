@@ -6,7 +6,7 @@ import { CatsModule } from './cats/cats.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { GraphQLModule } from '@nestjs/graphql';
-import * as path from 'path';
+import {join} from 'path';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import * as path from 'path';
     GraphQLModule.forRoot({
       debug: false,
       playground: true,
-      autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
     }),
     CatsModule,

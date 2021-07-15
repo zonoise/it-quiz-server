@@ -21,11 +21,17 @@ input ChoiceInput {
 input CreateQuizInput {
   choices: [ChoiceInput!]!
 
-  """Example field (placeholder)"""
-  quizNumber: Int!
+  """問題文 詳細"""
+  detail: String!
 
   """いつの試験か。　例:令和元年秋"""
-  srcExam: String!
+  exam: String!
+
+  """問題文 画像"""
+  image: String!
+
+  """問の番号　 例:問"""
+  quizNumber: Int!
 
   """問題文"""
   title: String!
@@ -38,7 +44,7 @@ type Mutation {
 }
 
 type Query {
-  quiz(id: Int!): Quiz!
+  quiz(id: String!): Quiz!
   quizzes: [Quiz!]!
 }
 
@@ -58,13 +64,19 @@ type Quiz {
 
 input UpdateQuizInput {
   choices: [ChoiceInput!]
-  id: Int!
 
-  """Example field (placeholder)"""
-  quizNumber: Int
+  """問題文 詳細"""
+  detail: String
 
   """いつの試験か。　例:令和元年秋"""
-  srcExam: String
+  exam: String
+  id: Int!
+
+  """問題文 画像"""
+  image: String
+
+  """問の番号　 例:問"""
+  quizNumber: Int
 
   """問題文"""
   title: String

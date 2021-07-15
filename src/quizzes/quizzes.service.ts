@@ -18,8 +18,8 @@ export class QuizzesService {
     return this.quizModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} quiz`;
+  findOne(id: string) {
+    return this.quizModel.findById(id);
   }
 
   update(id: number, updateQuizInput: UpdateQuizInput) {

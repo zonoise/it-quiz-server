@@ -24,14 +24,14 @@ input CreateQuizInput {
   """問題文 詳細"""
   detail: String!
 
-  """いつの試験か。　例:令和元年秋"""
-  exam: String!
-
   """問題文 画像"""
   image: String!
 
   """問の番号　 例:問"""
   quizNumber: Int!
+
+  """いつの試験か。　例:令和元年秋"""
+  srcExam: String!
 
   """問題文"""
   title: String!
@@ -48,15 +48,20 @@ type Query {
   quizzes: [Quiz!]!
 }
 
+"""問題"""
 type Quiz {
+  """選択肢"""
   choices: [Choice!]!
   id: ID!
 
-  """Example field (placeholder)"""
+  """何問目か"""
   quizNumber: Int!
 
   """いつの試験か。　例:令和元年秋"""
   srcExam: String!
+
+  """タグ"""
+  tags: [String!]!
 
   """問題文"""
   title: String!
@@ -67,9 +72,6 @@ input UpdateQuizInput {
 
   """問題文 詳細"""
   detail: String
-
-  """いつの試験か。　例:令和元年秋"""
-  exam: String
   id: Int!
 
   """問題文 画像"""
@@ -77,6 +79,9 @@ input UpdateQuizInput {
 
   """問の番号　 例:問"""
   quizNumber: Int
+
+  """いつの試験か。　例:令和元年秋"""
+  srcExam: String
 
   """問題文"""
   title: String

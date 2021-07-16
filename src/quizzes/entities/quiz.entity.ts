@@ -1,18 +1,21 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 
-@ObjectType()
+@ObjectType({description: '問題'})
 export class Quiz {
   @Field(() => ID)
   id: string;
 
-  @Field(() => Int, { description: 'Example field (placeholder)' })
+  @Field(() => Int, { description: '何問目か' })
   quizNumber: number;
 
-  @Field(() => String, { description: '問題文' })
+  @Field(() => String, { description: '問題文',nullable:false })
   title: string;
 
-  @Field(() => [Choice])
+  @Field(() => [Choice],{ description: '選択肢' })
   choices: [Choice];
+
+  @Field(() => [String],{description:'タグ'})
+  tags: string[];
 
   @Field(() => String, { description: 'いつの試験か。　例:令和元年秋' })
   srcExam: string;

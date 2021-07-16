@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { CreateQuizInput } from './dto/create-quiz.input';
 import { UpdateQuizInput } from './dto/update-quiz.input';
 import { Quiz, QuizDocument } from './schema/quiz.schema';
@@ -19,6 +19,10 @@ export class QuizzesService {
   }
 
   findOne(id: string) {
+    if(!Types.ObjectId.isValid(id)){
+      console.log("invalid objectId");
+    }
+
     return this.quizModel.findById(id);
   }
 

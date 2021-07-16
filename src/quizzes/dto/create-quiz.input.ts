@@ -1,4 +1,5 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
+import { Choice } from '../entities/quiz.entity';
 
 @InputType()
 export class CreateQuizInput {
@@ -18,7 +19,7 @@ export class CreateQuizInput {
   choices: ChoiceInput[];
 
   @Field(() => String, { description: 'いつの試験か。　例:令和元年秋' })
-  exam: string;
+  srcExam: string;
 }
 
 @InputType()

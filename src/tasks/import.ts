@@ -1,9 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
-import { CatsService } from 'src/cats/cats.service';
-import { CatsModule } from 'src/cats/cats.module';
 import * as yargs from 'yargs';
-import { CreateCatDto } from 'src/cats/dto/create-cat.dto';
 import * as fs from 'fs';
 import { parse } from 'papaparse';
 import { QuizzesModule } from 'src/quizzes/quizzes.module';
@@ -55,7 +52,7 @@ async function bootstrap() {
       title: row.title,
       detail: row.detail,
       image: row.image,
-      exam: row.exam,
+      srcExam: row.exam,
       choices: choices,
     };
 

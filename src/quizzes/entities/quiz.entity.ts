@@ -17,6 +17,9 @@ export class Quiz {
   @Field(() => [String],{description:'タグ'})
   tags: string[];
 
+  @Field(() => String,{description:'正解インデックス'})
+  answer: string;
+
   @Field(() => String, { description: 'いつの試験か。　例:令和元年秋' })
   srcExam: string;
 }

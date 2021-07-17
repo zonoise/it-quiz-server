@@ -15,6 +15,9 @@ export class Quiz {
   choices: [{ index: string; body: string }];
 
   @Prop()
+  answer: string;
+
+  @Prop()
   srcExam: string;
 }
 

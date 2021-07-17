@@ -15,8 +15,11 @@ export class CreateQuizInput {
   @Field(() => String, { description: '問題文 画像' })
   image: string;
   
-  @Field(() => [ChoiceInput])
+  @Field(() => [ChoiceInput] ,{description:'選択肢'})
   choices: ChoiceInput[];
+
+  @Field(() => String,{description:'正解インデックス'})
+  answer: string;
 
   @Field(() => String, { description: 'いつの試験か。　例:令和元年秋' })
   srcExam: string;

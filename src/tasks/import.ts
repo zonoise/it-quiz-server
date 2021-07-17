@@ -54,6 +54,7 @@ async function bootstrap() {
       image: row.image,
       srcExam: row.exam,
       choices: choices,
+      answer: row.answer
     };
 
     console.log(input);

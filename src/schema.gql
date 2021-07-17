@@ -19,6 +19,10 @@ input ChoiceInput {
 }
 
 input CreateQuizInput {
+  """正解インデックス"""
+  answer: String!
+
+  """選択肢"""
   choices: [ChoiceInput!]!
 
   """問題文 詳細"""
@@ -50,6 +54,9 @@ type Query {
 
 """問題"""
 type Quiz {
+  """正解インデックス"""
+  answer: String!
+
   """選択肢"""
   choices: [Choice!]!
   id: ID!
@@ -68,6 +75,10 @@ type Quiz {
 }
 
 input UpdateQuizInput {
+  """正解インデックス"""
+  answer: String
+
+  """選択肢"""
   choices: [ChoiceInput!]
 
   """問題文 詳細"""

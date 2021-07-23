@@ -6,7 +6,7 @@ import { CatsModule } from './cats/cats.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { GraphQLModule } from '@nestjs/graphql';
-import {join} from 'path';
+import { join } from 'path';
 
 @Module({
   imports: [

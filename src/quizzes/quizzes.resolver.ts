@@ -23,6 +23,11 @@ export class QuizzesResolver {
     return this.quizzesService.findOne(id);
   }
 
+  @Query(() => Quiz, { name: 'nextQuiz', nullable: true })
+  findNext(@Args('id', { type: () => String }) id: string) {
+    return this.quizzesService.findNext(id);
+  }
+
   @Mutation(() => Quiz)
   updateQuiz(@Args('updateQuizInput') updateQuizInput: UpdateQuizInput) {
     return this.quizzesService.update(updateQuizInput.id, updateQuizInput);

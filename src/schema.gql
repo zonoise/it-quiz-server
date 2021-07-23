@@ -48,6 +48,7 @@ type Mutation {
 }
 
 type Query {
+  nextQuiz(id: String!): Quiz
   quiz(id: String!): Quiz!
   quizzes: [Quiz!]!
 }

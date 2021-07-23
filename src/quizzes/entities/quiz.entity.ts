@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 
-@ObjectType({description: '問題'})
+@ObjectType({ description: '問題' })
 export class Quiz {
   @Field(() => ID)
   id: string;
@@ -8,16 +8,16 @@ export class Quiz {
   @Field(() => Int, { description: '何問目か' })
   quizNumber: number;
 
-  @Field(() => String, { description: '問題文',nullable:false })
+  @Field(() => String, { description: '問題文', nullable: false })
   title: string;
 
-  @Field(() => [Choice],{ description: '選択肢' })
+  @Field(() => [Choice], { description: '選択肢' })
   choices: [Choice];
 
-  @Field(() => [String],{description:'タグ'})
+  @Field(() => [String], { description: 'タグ' })
   tags: string[];
 
-  @Field(() => String,{description:'正解インデックス'})
+  @Field(() => String, { description: '正解インデックス' })
   answer: string;
 
   @Field(() => String, { description: 'いつの試験か。　例:令和元年秋' })

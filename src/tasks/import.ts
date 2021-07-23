@@ -54,7 +54,7 @@ async function bootstrap() {
       image: row.image,
       srcExam: row.exam,
       choices: choices,
-      answer: row.answer
+      answer: row.answer,
     };
 
     console.log(input);
@@ -88,7 +88,7 @@ async function readFromCsv(csvFile: string) {
     .then((data) => (res = data))
     .catch((error) => {
       throw new Error(error);
-   });
+    });
 
   return res;
 }

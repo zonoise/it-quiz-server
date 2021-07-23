@@ -19,11 +19,29 @@ export class QuizzesService {
   }
 
   findOne(id: string) {
-    if(!Types.ObjectId.isValid(id)){
-      console.log("invalid objectId");
+    if (!Types.ObjectId.isValid(id)) {
+      console.log('invalid objectId');
     }
 
     return this.quizModel.findById(id);
+  }
+
+  findNext(id: string) {
+    if (!Types.ObjectId.isValid(id)) {
+      console.log('invalid objectId');
+      return null;
+    }
+
+    const quiz = this.findOne(id)
+      .exec()
+      .then((q) => {
+        return this.quizModel.findOne({
+          srcExam: q.srcExam,
+          quizNumber: q.quizNumber + 1,
+        });
+      });
+
+    return quiz;
   }
 
   update(id: number, updateQuizInput: UpdateQuizInput) {

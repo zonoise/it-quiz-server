@@ -49,6 +49,8 @@ async function bootstrap() {
 
     const tags = [row.tag_1, row.tag_2, row.tag_3, row.tag_4];
 
+    const tag2 = [... tags.map(t => t.toLowerCase())];
+
     const input: CreateQuizInput = {
       quizNumber: row.num,
       title: row.title,
@@ -57,7 +59,7 @@ async function bootstrap() {
       srcExam: row.exam,
       choices: choices,
       answer: row.answer,
-      tags: tags,
+      tags: tag2,
     };
 
     console.log(input);

@@ -19,6 +19,9 @@ export class Quiz {
 
   @Prop()
   srcExam: string;
+
+  @Prop()
+  tags: string[];
 }
 
 export const QuizSchema = SchemaFactory.createForClass(Quiz);

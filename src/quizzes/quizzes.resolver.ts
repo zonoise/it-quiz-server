@@ -18,6 +18,11 @@ export class QuizzesResolver {
     return this.quizzesService.findAll();
   }
 
+  @Query(() => [Quiz], { name: 'findQuizzesByTags' })
+  findQuizzesByTag(@Args('tags', { type: () => [String] }) tags: string[]) {
+    return this.quizzesService.findAllByTags(tags);
+  }
+
   @Query(() => Quiz, { name: 'quiz' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.quizzesService.findOne(id);

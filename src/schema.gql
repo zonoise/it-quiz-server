@@ -37,6 +37,9 @@ input CreateQuizInput {
   """いつの試験か。　例:令和元年秋"""
   srcExam: String!
 
+  """タグ"""
+  tags: [String!]!
+
   """問題文"""
   title: String!
 }
@@ -48,6 +51,7 @@ type Mutation {
 }
 
 type Query {
+  findQuizzesByTags(tags: [String!]!): [Quiz!]!
   nextQuiz(id: String!): Quiz
   quiz(id: String!): Quiz!
   quizzes: [Quiz!]!
@@ -94,6 +98,9 @@ input UpdateQuizInput {
 
   """いつの試験か。　例:令和元年秋"""
   srcExam: String
+
+  """タグ"""
+  tags: [String!]
 
   """問題文"""
   title: String

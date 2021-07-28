@@ -18,6 +18,10 @@ export class QuizzesService {
     return this.quizModel.find().exec();
   }
 
+  findAllByTags(tags: string[]) {
+    return this.quizModel.find({ tags: { $in: tags } }).exec();
+  }
+
   findOne(id: string) {
     if (!Types.ObjectId.isValid(id)) {
       console.log('invalid objectId');

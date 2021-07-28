@@ -18,6 +18,9 @@ export class CreateQuizInput {
   @Field(() => [ChoiceInput], { description: '選択肢' })
   choices: ChoiceInput[];
 
+  @Field(() => [String], { description: 'タグ' })
+  tags: string[];
+
   @Field(() => String, { description: '正解インデックス' })
   answer: string;
 

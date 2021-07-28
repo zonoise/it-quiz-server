@@ -47,6 +47,8 @@ async function bootstrap() {
       { index: '4', body: row.choice_4 } as ChoiceInput,
     ];
 
+    const tags = [row.tag_1, row.tag_2, row.tag_3, row.tag_4];
+
     const input: CreateQuizInput = {
       quizNumber: row.num,
       title: row.title,
@@ -55,6 +57,7 @@ async function bootstrap() {
       srcExam: row.exam,
       choices: choices,
       answer: row.answer,
+      tags: tags,
     };
 
     console.log(input);

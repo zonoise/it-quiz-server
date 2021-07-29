@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { join } from 'path';
     }),
     CatsModule,
     QuizzesModule,
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

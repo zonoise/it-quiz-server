@@ -47,7 +47,9 @@ async function bootstrap() {
       { index: '4', body: row.choice_4 } as ChoiceInput,
     ];
 
-    const tags = [row.tag_1, row.tag_2, row.tag_3, row.tag_4].map(t => t.toLowerCase());
+    const tags = [row.tag_1, row.tag_2, row.tag_3, row.tag_4].map((t) =>
+      t.toLowerCase(),
+    );
 
     const input: CreateQuizInput = {
       quizNumber: row.num,

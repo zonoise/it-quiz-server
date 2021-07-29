@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { CreateQuizInput } from './dto/create-quiz.input';
-import { UpdateQuizInput } from './dto/update-quiz.input';
 import { Quiz, QuizDocument } from './schema/quiz.schema';
 
 @Injectable()
@@ -46,13 +45,5 @@ export class QuizzesService {
       });
 
     return quiz;
-  }
-
-  update(id: number, updateQuizInput: UpdateQuizInput) {
-    return `This action updates a #${id} quiz`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} quiz`;
   }
 }

@@ -1,5 +1,4 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
-import { Choice } from '../entities/quiz.entity';
 
 @InputType()
 export class CreateQuizInput {

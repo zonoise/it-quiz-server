@@ -55,6 +55,8 @@ type Query {
   nextQuiz(id: String!): Quiz
   quiz(id: String!): Quiz!
   quizzes: [Quiz!]!
+  tagBySlug(slug: String!): Tag
+  tags: [Tag!]!
 }
 
 """問題"""
@@ -76,6 +78,14 @@ type Quiz {
   tags: [String!]!
 
   """問題文"""
+  title: String!
+}
+
+type Tag {
+  """スラッグ"""
+  slug: String!
+
+  """"""
   title: String!
 }
 

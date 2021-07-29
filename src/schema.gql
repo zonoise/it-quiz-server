@@ -46,8 +46,6 @@ input CreateQuizInput {
 
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
-  removeQuiz(id: Int!): Quiz!
-  updateQuiz(updateQuizInput: UpdateQuizInput!): Quiz!
 }
 
 type Query {
@@ -75,7 +73,7 @@ type Quiz {
   srcExam: String!
 
   """タグ"""
-  tags: [String!]!
+  tags: [String!]
 
   """問題文"""
   title: String!
@@ -87,31 +85,4 @@ type Tag {
 
   """"""
   title: String!
-}
-
-input UpdateQuizInput {
-  """正解インデックス"""
-  answer: String
-
-  """選択肢"""
-  choices: [ChoiceInput!]
-
-  """問題文 詳細"""
-  detail: String
-  id: Int!
-
-  """問題文 画像"""
-  image: String
-
-  """問の番号　 例:問"""
-  quizNumber: Int
-
-  """いつの試験か。　例:令和元年秋"""
-  srcExam: String
-
-  """タグ"""
-  tags: [String!]
-
-  """問題文"""
-  title: String
 }

@@ -22,6 +22,12 @@ export class QuizzesResolver {
     return this.quizzesService.findAllByTags(tags);
   }
 
+  @Query(() => [Quiz], { name: 'findQuizzesByExam' })
+  findQuizzesByExam(@Args('exam', { type: () => String }) exam: string) {
+    const ret = this.quizzesService.findByAllExam(exam);
+    return ret;
+  }
+
   @Query(() => Quiz, { name: 'quiz' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.quizzesService.findOne(id);
@@ -31,5 +37,4 @@ export class QuizzesResolver {
   findNext(@Args('id', { type: () => String }) id: string) {
     return this.quizzesService.findNext(id);
   }
-
 }

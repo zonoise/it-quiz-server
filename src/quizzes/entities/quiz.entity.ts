@@ -14,7 +14,7 @@ export class Quiz {
   @Field(() => [Choice], { description: '選択肢' })
   choices: [Choice];
 
-  @Field(() => [String], { description: 'タグ' , nullable: true  })
+  @Field(() => [String], { description: 'タグ', nullable: true })
   tags: string[];
 
   @Field(() => String, { description: '正解インデックス' })

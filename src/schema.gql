@@ -44,11 +44,28 @@ input CreateQuizInput {
   title: String!
 }
 
+type Exam {
+  id: ID!
+
+  """"""
+  slug: String!
+
+  """"""
+  sort: Float
+
+  """"""
+  title: String!
+}
+
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
 }
 
 type Query {
+  exam(id: Int!): Exam!
+  examBySlug(slug: String!): Exam!
+  exams: [Exam!]!
+  findQuizzesByExam(exam: String!): [Quiz!]!
   findQuizzesByTags(tags: [String!]!): [Quiz!]!
   nextQuiz(id: String!): Quiz
   quiz(id: String!): Quiz!

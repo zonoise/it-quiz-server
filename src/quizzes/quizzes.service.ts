@@ -21,6 +21,10 @@ export class QuizzesService {
     return this.quizModel.find({ tags: { $in: tags } }).exec();
   }
 
+  findByAllExam(exam: string) {
+    return this.quizModel.find({ srcExam: exam }).exec();
+  }
+
   findOne(id: string) {
     if (!Types.ObjectId.isValid(id)) {
       console.log('invalid objectId');

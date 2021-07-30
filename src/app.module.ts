@@ -8,6 +8,7 @@ import { QuizzesModule } from './quizzes/quizzes.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { TagsModule } from './tags/tags.module';
+import { ExamsModule } from './exams/exams.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { TagsModule } from './tags/tags.module';
     CatsModule,
     QuizzesModule,
     TagsModule,
+    ExamsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
